@@ -6,15 +6,30 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisterCompanyController;
+use App\Http\Controllers\Auth\RegisterEmployeeController;
+
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth', 'role:admin']], function() { 
-// ->middleware('guest')
-    Route::get('/dashboard/register', [RegisteredUserController::class, 'create'])->name('register');
 
-    Route::post('/dashboard/register', [RegisteredUserController::class, 'store']);
+// Route::group(['middleware' => ['auth', 'role:admin']], function() { 
+// Register User Route
+Route::get('/register', [RegisteredUserController::class, 'create'])->middleware('guest')->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest')->name('register');
+
+// });
+
+// Register company Route
+Route::get('/registerCompany', [RegisterCompanyController::class, 'create'])->middleware('guest')->name('register.company');
+Route::post('/registerCompany', [RegisterCompanyController::class, 'store'])->middleware('guest')->name('register.company');
+
+// Register Employee Route
+Route::group(['middleware' => ['auth', 'role:company']], function() { 
+    // Route::get('/dashboard', [RegisterEmployeeController::class, 'create'])->middleware('guest')->name('register.employee');
+    Route::post('/dashboard/employees', [RegisteredUserController::class, 'store'])->name('register.employee');
 });
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])

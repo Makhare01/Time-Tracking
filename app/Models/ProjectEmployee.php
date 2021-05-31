@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class ProjectEmployee extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'offer_id';
+    
+    protected $table = 'project_employee';
 
     protected $fillable = [
-        'key',
-        'adds_text',
-        'bid',
-        'comment',
+        'project_id',
+        'employee_email',
     ];
 }

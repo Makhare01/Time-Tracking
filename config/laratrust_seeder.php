@@ -12,15 +12,23 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'superadmin' => [
+        // 'superadmin' => [
+        //     'users' => 'c,r,u,d',
+        //     'profile' => 'r,u'
+        // ],
+        // 'registrar' => [
+        //     'users' => 'c,r,u,d',
+        //     'profile' => 'r,u'
+        // ],
+        // 'roller' => [
+        //     'users' => 'c,r,u,d',
+        //     'profile' => 'r,u'
+        // ],
+        'company' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'registrar' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
-        'roller' => [
+        'user' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],

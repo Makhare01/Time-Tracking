@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuspendsTable extends Migration
+class CreateCompanyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateSuspendsTable extends Migration
      */
     public function up()
     {
-        Schema::create('suspends', function (Blueprint $table) {
+        Schema::create('company', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('account_id');
-            $table->bigInteger('offer_id');
-            $table->bigInteger('user_id');
-            $table->string('account');
-            $table->string('offer');
-
-            $table->string('status')->nullable();
+            $table->string('company_name');
+            $table->string('email')->unique();
+            $table->string('role_id')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateSuspendsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suspends');
+        Schema::dropIfExists('company');
     }
 }

@@ -79,3 +79,100 @@ td {
         margin-top: 20px !important;
     }
 }
+
+.all-employee-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* border: solid 1px red; */
+}
+
+.all-employess-text {
+    line-height: 30px;
+    margin-left: 20px;
+    font-family: "Nunito";
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ptojects-div {
+    width: 100%;
+    margin-top: 30px;
+    /* border: solid 1px grey; */
+}
+
+.ptojects-div-header {
+    font-family: "Nunito";
+    color: grey;
+    font-size: 10pt;
+}
+
+.projects {
+    margin-top: 20px;
+}
+
+.project {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+}
+
+.project-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* border: solid 1px red; */
+}
+
+.project-icon p {
+    font-family: "Nunito";
+    font-size: 10pt;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.project-modal {
+    border-radius: 50px !important;
+}
+
+.image-header::before {
+    position: absolute;
+    width: 100%;
+    content: "";
+    z-index: -2;
+    top: -6vh;
+    right: 0;
+    bottom: -4vh;
+    max-width: 59.7%;
+    opacity: var(--opacity-bg-dots);
+    background-image: radial-gradient(var(--color-dots) 6%, transparent 0);
+    background-size: 28px 28px;
+}
+
+.register_modal {
+    background-color: white !important;
+}
+
+.message-div:hover {
+    /* background-color: #7b64e7; */
+    cursor: pointer;
+
+    background: #4776e6;
+    background: -webkit-linear-gradient(to right, #4776e6, #8e54e9);
+    background: linear-gradient(to right, #4776e6, #8e54e9);
+}
+
+.message-div:hover .message-icon {
+    stroke: white;
+}
+
+.message-div:hover .message-text {
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

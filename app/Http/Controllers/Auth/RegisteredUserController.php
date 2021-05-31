@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Employee;
+use App\Models\Company;
+use App\Models\Project;
+use App\Models\ProjectEmployee;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -33,11 +37,10 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'name' => 'required|string|max:255',
-            'role_id' => 'required|max:255',
-            // 'email' => 'required|string|email|max:255|unique:users',
+            'first_name' => 'max:255',
+            'last_name' => 'max:255',
+            'role_id' => 'max:255',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
 
@@ -46,22 +49,54 @@ class RegisteredUserController extends Controller
         //     'first_name' => $request->first_name,
         //     'last_name' => $request->last_name,
         //     'role_id' => $request->role_id,
-        //     // 'email' => $request->email,
+        //     'email' => $request->email,
         //     'password' => Hash::make($request->password),
         // ]));
 
+        // dd($request->company_id);
+        // exit;
+
         $user = User::create([
-            'name' => $request->name,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'email' => $request->email,
             'role_id' => $request->role_id,
-            // 'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if($request->role_id == "user"):
+            if($request->company_id):
+                Employee::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'company_id' => $request->company_id,
+                    'email' => $request->email,
+                    'role_id' => $request->role_id,
+                    'password' => Hash::make($request->password),
+                    'project_id' => $request->project_id,
+                ]);
+                
+                foreach($request->project_id as $value):
+                    ProjectEmployee::create([
+                        'project_id' => $value,
+                        'employee_email' => $request->email,
+                    ]);
+                endforeach;
+            endif;
+
+        endif;
+
+        if($request->company_id == null):
+            Auth::login($user);
+        endif;
+        
 
         $user->attachRole($request->role_id); 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        if($request->company_id == null) {
+            return redirect(RouteServiceProvider::HOME);
+        } else return redirect('dashboard/employees');
+        
     }
 }

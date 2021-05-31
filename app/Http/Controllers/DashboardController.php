@@ -15,18 +15,23 @@ class DashboardController extends Controller
 {
     public function index() {
         // $user = User::findOrFail($id);
-        if(Auth::user()->hasRole('registrar')) {
-            return view('registrar');
-        }
-        elseif (Auth::user()->hasRole('superadmin')) {
-            return view('superadmin');
-        }
-        elseif (Auth::user()->hasRole('roller')) {
-            return view('roller');
-        }
-        elseif (Auth::user()->hasRole('admin')) {
-            $users = User::all();
-            return view('admin');
+        // if(Auth::user()->hasRole('registrar')) {
+        //     return view('registrar');
+        // }
+        // elseif (Auth::user()->hasRole('superadmin')) {
+        //     return view('superadmin');
+        // }
+        // elseif (Auth::user()->hasRole('roller')) {
+        //     return view('roller');
+        // }
+        // elseif (Auth::user()->hasRole('admin')) {
+        //     $users = User::all();
+        //     return view('admin');
+        // }
+        if(Auth::user()->hasRole('company')) {
+            return view('company');
+        }else if(Auth::user()->hasRole('user')) {
+            return view('user');
         }
     }
 

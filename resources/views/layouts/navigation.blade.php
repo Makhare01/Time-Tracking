@@ -2,60 +2,61 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="{{ route('dashboard') }}">
+                    <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> -->
+                    <img src="/img/time.svg" alt="Faust logo" width = "30">
+                </a>
+            </div>
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> -->
-                        <img src="/img/f.png" alt="Faust logo" width = "30">
-                    </a>
-                </div>
-
                 <!-- Navigation Links  -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" style="text-decoration: none">
+                <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                    <x-nav-link style="border: solid 1px red;" :href="route('dashboard')" :active="request()->routeIs('dashboard')" style="text-decoration: none">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 @if (Auth::user()->hasRole('admin'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
                         <x-nav-link :href="route('dashboard.users')" :active="request()->routeIs('dashboard.users')" style="text-decoration: none">
                             {{ __('All user') }}
                         </x-nav-link>
                     </div>
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
                         <x-nav-link :href="route('register')" :active="request()->routeIs('register')" style="text-decoration: none">
                             {{ __('Register user') }}
                         </x-nav-link>
                     </div>
                 @endif
 
-                @if (Auth::user()->hasRole('roller'))
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.offers')" :active="request()->routeIs('dashboard.offers')" style="text-decoration: none">
-                        {{ __('Roller Table') }}
-                    </x-nav-link>
-                </div>
-
-                @endif
-
-                @if (Auth::user()->hasRole('superadmin'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('dashboard.offersList')" :active="request()->routeIs('dashboard.offersList')" style="text-decoration: none">
-                            {{ __('Offers Table') }}
+                @if (Auth::user()->hasRole('company'))
+                    <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                        <x-nav-link :href="route('dashboard.employees')" :active="request()->routeIs('dashboard.employees')" style="text-decoration: none">
+                            {{ __('Employees') }}
                         </x-nav-link>
                     </div>
+                    <!-- <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                        <x-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')" style="text-decoration: none">
+                            {{ __('Calendar') }}
+                        </x-nav-link>
+                    </div> 
+                    <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                        <x-nav-link :href="route('dashboard.statistics')" :active="request()->routeIs('dashboard.statistics')" style="text-decoration: none">
+                            {{ __('Statistic') }}
+                        </x-nav-link>
+                    </div> -->
                 @endif
 
-                @if (Auth::user()->hasRole('registrar'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('dashboard.accountsList')" :active="request()->routeIs('dashboard.accountsList')" style="text-decoration: none">
-                            {{ __('Accounts Table') }}
+                @if (Auth::user()->hasRole('user'))
+                    <!-- <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                        <x-nav-link :href="route('dashboard.work')" :active="request()->routeIs('dashboard.work')" style="text-decoration: none">
+                            {{ __('Work') }}
                         </x-nav-link>
-                    </div>
+                    </div> -->
                 @endif
+              
             </div>
 
             <!-- Settings Dropdown -->
@@ -63,7 +64,13 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>
+                                @if(Auth::user()->role_id == "user" || Auth::user()->role_id == "admin")
+                                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name }} {{Auth::user()->last_name }}</div>
+                                @else
+                                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->company_name }}</div>
+                                @endif    
+                            </div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -148,8 +155,11 @@
                 </div>
 
                 <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <!-- <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div> -->
+                    @if(Auth::user()->role_id == "user" || Auth::user()->role_id == "admin")
+                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name }} {{Auth::user()->last_name }} </div>
+                    @else
+                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->company_name }}</div>
+                    @endif
                 </div>
             </div>
 

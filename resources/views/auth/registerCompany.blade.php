@@ -1,6 +1,14 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
+            <div class="ml-5 mt-3" style="margin-left: 20px; margin-right: 20px; width: calc(100% - 40px); height: 50px;">
+                <span style="font-family: 'Nunito'; font-size: 24px; float: left; color: white; line-height: 50px;">Registration</span>
+                <span style="font-family: 'Nunito'; font-size: 24px; float: right; color: white;">
+                    <a href="/">
+                        <img src="/img/time.svg" alt="Time tracking icon" width="50px" height="50px">
+                    </a>
+                </span>
+            </div>
             <!-- <a href="/registerCompany" style="text-decoration: none;">
                 <button type="button" class="btn btn-outline-primary mr-5">Company</button>
             </a>
@@ -13,48 +21,22 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
-            <p id="company_label" style="display: block; text-align: center; font-size: 24px; font-family: 'Roboto', sans-serif; color: #8BA2FF;">Register A User</p>
-
+        <form method="POST" action="{{ route('register.company') }}">
+            <p id="company_label" style="display: block; text-align: center; font-size: 24px; font-family: 'Nunito'; letter-spacing: 5px; color: #8BA2FF;">Register Company</p>
             @csrf
 
             <!-- Company Name -->
-            <!-- <div id="company_name_div">
+            <div id="company_name_div">
                 <x-label for="company_name" :value="__('Company Name')" />
 
                 <x-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" autofocus />
-            </div> -->
-
-            <!-- First Name -->
-            <div id="first_name_div">
-                <x-label for="first_name" :value="__('First name')" />
-
-                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" autofocus />
             </div>
-
-            <!-- Last Name -->
-            <div id="last_name_div">
-                <x-label for="last_name" :value="__('Last name')" />
-
-                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" autofocus />
-            </div>
-
-            <!-- Name -->
-            <!-- <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div> -->
 
              <!-- Select Option Rol type -->
              <div class="mt-4" id="role_id_div" style="display: none">
-                <x-label for="role_id" value="{{ __('Register as:') }}" />
+                <!-- <x-label for="role_id" value="{{ __('Register as:') }}" /> -->
                 <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option id="role_option_value" value="user"></option>
-                    <!-- <option value="registrar">registrar</option>
-                    <option value="superadmin">superadmin</option>
-                    <option value="roller">roller</option>
-                    <option value="admin">Admin</option> -->
+                    <option id="role_option_value" value="company"></option>
                 </select>
             </div>
 
