@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Employee;
 use App\Models\User;
 use App\Models\ProjectEmployee;
+use App\Models\Work;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -14,8 +15,9 @@ class CompanyController extends Controller
 {
     public function employees() {
         $projects = Project::where('company_id', Auth::user()->id)->get();
-        $employees = Employee::where('company_id', Auth::user()->id)->get();
+        $employees = Employee::where('company_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         $project_employees = ProjectEmployee::all();
+        $works = Work::where('company_id', Auth::user()->id)->get();
         $checker = 0;
         $colors = ["bg-indigo-200", "bg-indigo-300", "bg-indigo-400", "bg-indigo-500", "bg-indigo-600", "bg-purple-200", "bg-purple-300", "bg-purple-400", "bg-purple-500", "bg-indigo-600", "bg-blue-400", "bg-blue-500", "bg-blue-600"];
 
@@ -23,6 +25,7 @@ class CompanyController extends Controller
             'projects' => $projects,
             'employees' => $employees,
             'project_employees' => $project_employees,
+            'works' => $works,
             'checker' => $checker,
             'colors' => $colors,
         ]);
@@ -35,11 +38,22 @@ class CompanyController extends Controller
             'description' => 'string',
         ]);
 
-        Project::create([
-            'project_name' => $request->project_name,
-            'description' => $request->description,
-            'company_id' => Auth::user()->id,
-        ]);
+        if($request->project_status):
+            Project::create([
+                'project_name' => $request->project_name,
+                'description' => $request->description,
+                'project_status' => $request->project_status,
+                'company_id' => Auth::user()->id,
+            ]);
+        else:
+            Project::create([
+                'project_name' => $request->project_name,
+                'description' => $request->description,
+                'company_id' => Auth::user()->id,
+            ]);
+        endif;
+
+        
 
 
         return redirect('dashboard/employees');

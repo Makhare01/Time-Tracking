@@ -10,6 +10,9 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="/img/time.svg" type="image/x-icon">
 
+        <!-- Livewire -->
+        @livewireStyles
+
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
@@ -53,5 +56,7 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @livewireScripts        
     </body>
 </html>

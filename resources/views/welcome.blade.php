@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Faust</title>
+        <title>Time Tracking</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -51,54 +51,33 @@
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700">
                             <!-- <button type="button" class="btn btn-outline-primary">Login</button> -->
-                            <button type="button" class="focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100">
+                            <button style="font-family: TBC Contractica CAPS regular; padding-top: 10px; padding-bottom: 4px;" type="button" class="focus:outline-none text-purple-600 text-sm px-5 rounded-md hover:bg-purple-100">
                                 <!-- Login -->
                                 შესვლა
                             </button>
                         </a>
                         <!-- This example requires Tailwind CSS v2.0+ -->
-                        <div class="relative inline-block text-left">
+                        <!-- <div class="relative inline-block text-left">
                             <div>
                                 <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                                    <!-- Language  -->
-                                    <!-- ენის შეცვლა -->
                                     ქართული
-                                <!-- Heroicon name: solid/chevron-down -->
                                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
                                 </button>
                             </div>
-
-                            
-                                <!-- Dropdown menu, show/hide based on menu state.
-
-                                Entering: "transition ease-out duration-100"
-                                From: "transform opacity-0 scale-95"
-                                To: "transform opacity-100 scale-100"
-                                Leaving: "transition ease-in duration-75"
-                                From: "transform opacity-100 scale-100"
-                                To: "transform opacity-0 scale-95" -->
                            
                             <div id="dropdown-menu" class="transition ease-out duration-100 origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none opacity-0 pointer-events-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                 <div class="py-1" role="none">
-                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
-                                    <!-- Georgian -->
                                     ქართული
                                 </a>
                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">
-                                    <!-- English -->
                                     ინგლისური
                                 </a>
-                                <!-- <form method="POST" action="#" role="none">
-                                    <button type="submit" class="text-gray-700 block w-full text-left px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">
-                                        English
-                                    </button>
-                                </form> -->
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
 
                         @if (Route::has('register'))
@@ -119,9 +98,9 @@
                         <h1 class="mb-5" style="color: #8BA2FF; letter-spacing: 10px; font-size: 44px;">TIME TRACKING</h1>
                         <!-- <p style="color: #8BA2FF; letter-spacing: 4px; font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: bold; font-style: italic;">CONTROL THE TIME FOR <span style="color: #FFDE91;"><i>BETTER</i></span> RESULTS</p> -->
                         <!-- <p style="color: #8BA2FF; letter-spacing: 4px; font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: bold; font-style: italic;">TIME MANAGEMENG FOR <span style="color: #FFDE91;"><i>BETTER</i></span> RESULTS</p> -->
-                        <p style="color: #8BA2FF; letter-spacing: 4px; font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: bold; font-style: italic;">დროის მენეჯმენტი <span style="color: #FFDE91;"><i>უკეთესი</i></span> შედეგებისათვის</p>
+                        <p style="color: #8BA2FF; letter-spacing: 4px; font-family: TBC Contractica CAPS regular; font-size: 18px; font-weight: bold; font-style: italic;">დროის მენეჯმენტი <span style="color: #FFDE91;"><i>უკეთესი</i></span> შედეგებისათვის</p>
                         <!-- <button class="py-2 px-4 my-5 text-red-600 font-semibold border border-red-600 rounded get-started-button">Get started</button> -->
-                        <button type="button" class="focus:outline-none text-white text-sm font-bold py-2.5 px-4 my-5 rounded-md bg-gray-900 hover:bg-gray-800 hover:shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button style="font-family: TBC Contractica CAPS regular;" type="button" class="focus:outline-none text-white text-sm font-bold pt-3 pb-2 px-4 my-5 rounded-md bg-gray-900 hover:bg-gray-800 hover:shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <!-- Get started -->
                             დაწყება
                         </button>
@@ -133,7 +112,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" style="font-family: 'Nunito'; font-size: 14pt; font-weight: bold;">
+                                <h5 class="modal-title" id="exampleModalLabel" style="font-family: TBC Contractica CAPS regular; font-size: 14pt; font-weight: bold;">
                                     <!-- Register -->
                                     რეგისტრაცია
                                 </h5>
@@ -144,14 +123,14 @@
                                 <div style="display: flex;  width: 100%;">
                                     <a href="{{ route('register.company') }}" class="text-sm text-gray-700 w-1/2">
                                         <!-- <button type="button" class="btn btn-outline-primary w-full">Register A Company</button> -->
-                                        <button type="button" class="focus:outline-none text-blue-600 text-sm py-2.5 px-4 mr-2 rounded-md border border-blue-600 hover:bg-blue-50" style="width: calc(100% - 0.5rem)">
+                                        <button type="button" class="focus:outline-none text-blue-600 text-sm py-2.5 px-4 mr-2 rounded-md border border-blue-600 hover:bg-blue-50" style="font-family: TBC Contractica CAPS regular; width: calc(100% - 0.5rem)">
                                             <!-- Register A Company -->
                                             კომპანიის რეგისტრაცია
                                         </button>
                                     </a>
                                     <a href="{{ route('register') }}" class="text-sm text-gray-700 w-1/2">
                                         <!-- <button type="button" class="btn btn-outline-primary w-full">Register A User</button> -->
-                                        <button type="button" class="focus:outline-none text-blue-600 text-sm py-2.5 ml-2 px-3 rounded-md border border-blue-600 hover:bg-blue-50" style="width: calc(100% - 0.5rem)">
+                                        <button type="button" class="focus:outline-none text-blue-600 text-sm py-2.5 ml-2 px-3 rounded-md border border-blue-600 hover:bg-blue-50" style="font-family: TBC Contractica CAPS regular; width: calc(100% - 0.5rem)">
                                             <!-- Register A User -->
                                             მომხმარებლის რეგისტრაცია
                                         </button>
@@ -160,12 +139,12 @@
                                 
                             </div>
                             <div class="modal-footer">
-                                <p class="mr-4" style="font-family: 'Nunito'; font-size: 12pt; font-weight: bold;">
+                                <p class="mr-4" style="font-family: TBC Contractica CAPS regular; font-size: 12pt; font-weight: bold;">
                                     <!-- Already registered? -->
                                     უკვე რეგისტრირებული ხარ?
                                 </p>
                                 <a href="{{ route('login') }}">
-                                    <button type="button" class="focus:outline-none text-green-600 text-sm py-2.5 px-5 rounded-md border border-green-600 hover:bg-green-50">
+                                    <button style="font-family: TBC Contractica CAPS regular;" type="button" class="focus:outline-none text-green-600 text-sm py-2.5 px-5 rounded-md border border-green-600 hover:bg-green-50">
                                         <!-- Login -->
                                         შესვლა
                                     </button>

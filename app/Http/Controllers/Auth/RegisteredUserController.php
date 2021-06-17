@@ -53,14 +53,12 @@ class RegisteredUserController extends Controller
         //     'password' => Hash::make($request->password),
         // ]));
 
-        // dd($request->company_id);
-        // exit;
-
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'role_id' => $request->role_id,
+            'status' => $request->status,
             'password' => Hash::make($request->password),
         ]);
 
@@ -74,6 +72,7 @@ class RegisteredUserController extends Controller
                     'role_id' => $request->role_id,
                     'password' => Hash::make($request->password),
                     'project_id' => $request->project_id,
+                    'status' => $request->status,
                 ]);
                 
                 foreach($request->project_id as $value):

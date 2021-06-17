@@ -50,11 +50,11 @@
                 @endif
 
                 @if (Auth::user()->hasRole('user'))
-                    <!-- <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px ml-5 mr-5 sm:flex">
                         <x-nav-link :href="route('dashboard.work')" :active="request()->routeIs('dashboard.work')" style="text-decoration: none">
                             {{ __('Work') }}
                         </x-nav-link>
-                    </div> -->
+                    </div>
                 @endif
               
             </div>

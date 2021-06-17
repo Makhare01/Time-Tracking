@@ -13,6 +13,7 @@ class Project extends Model
         'project_name',
         'description',
         'company_id',
+        'project_status',
     ];
 
     public function employees() {

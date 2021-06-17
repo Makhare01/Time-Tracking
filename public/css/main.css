@@ -12,6 +12,10 @@
     background: #555;
 }
 
+.contractica-font {
+    font-family: TBC Contractica CAPS medium, sans-serif;
+}
+
 .addModel {
     /* width: 1000px !important; */
 }
@@ -102,7 +106,6 @@ td {
 }
 
 .ptojects-div-header {
-    font-family: "Nunito";
     color: grey;
     font-size: 10pt;
 }

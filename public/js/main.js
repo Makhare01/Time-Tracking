@@ -40,3 +40,18 @@ menuButton.onclick = function() {
         console.log(k);
     }
 };
+
+// User Project Active
+// function usserProject(project_id, projects) {
+//     for (let i = 0; i < projects.length; i++) {
+//         if (projects[i] == project_id)
+//             document.getElementById("project" + project_id).style.border =
+//                 "solid 1px #059669";
+//         else {
+//             document.getElementById("project" + projects[i]).style.border =
+//                 "solid 1px #e5e7eb";
+//         }
+//     }
+
+//     // console.log(projects);
+// }

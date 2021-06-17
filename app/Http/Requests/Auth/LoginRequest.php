@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+use App\Models\Employee;
+use App\Models\User;
+
 class LoginRequest extends FormRequest
 {
     /**
@@ -44,6 +47,14 @@ class LoginRequest extends FormRequest
      */
     public function authenticate()
     {
+        Employee::where('email', $this->only('email')['email'])->update([
+            'status' => 'active',
+        ]);
+
+        User::where('email', $this->only('email')['email'])->update([
+            'status' => 'active',
+        ]);
+
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
