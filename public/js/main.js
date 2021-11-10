@@ -41,17 +41,17 @@ menuButton.onclick = function() {
     }
 };
 
-// User Project Active
-// function usserProject(project_id, projects) {
-//     for (let i = 0; i < projects.length; i++) {
-//         if (projects[i] == project_id)
-//             document.getElementById("project" + project_id).style.border =
-//                 "solid 1px #059669";
-//         else {
-//             document.getElementById("project" + projects[i]).style.border =
-//                 "solid 1px #e5e7eb";
-//         }
-//     }
+// User notification
+var display = false;
+function notifications() {
+    console.log("work!");
+    let notificationDiv = document.getElementById("user-notification-id");
 
-//     // console.log(projects);
-// }
+    if (display == true) {
+        notificationDiv.style.display = "none";
+        display = false;
+    } else {
+        notificationDiv.style.display = "block";
+        display = true;
+    }
+}

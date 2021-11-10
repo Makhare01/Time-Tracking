@@ -22,12 +22,18 @@ class UserController extends Controller
             array_push($projectIds, $TMP->id);
         }
 
-        // dd(gettype($projectIds));
+        $user = Employee::where('email', Auth::user()->email)->first();
+        $employeeCompany = $user->company_id;
+
+        $teammates = Employee::where('company_id', $employeeCompany)->get();
+
+        // dd($teammates);
         // exit;
 
         return view('work', [
             'projects' => $projects,
             'projectIds' => $projectIds,
+            'teammates' => $teammates,
         ]);
     }
 }

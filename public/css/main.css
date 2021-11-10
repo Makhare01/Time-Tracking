@@ -16,9 +16,6 @@
     font-family: TBC Contractica CAPS medium, sans-serif;
 }
 
-.addModel {
-    /* width: 1000px !important; */
-}
 table {
     border: solid 1px black !important;
 }
@@ -178,4 +175,43 @@ td {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.user-notification {
+    position: absolute;
+    display: none;
+    z-index: 999;
+    width: 340px;
+    height: 400px;
+    border-radius: 7px;
+    top: -60px;
+    left: 280px;
+
+    background-color: #f2f5fa;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    animation: fadein 0.5s;
+    overflow-y: scroll;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.user-notification-user-card {
+    width: 100%;
+    height: 60px;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
+    display: flex;
+    position: relative;
+}
+
+.user-notification-user-card:hover {
+    background-color: #edf4fe;
+    cursor: pointer;
 }

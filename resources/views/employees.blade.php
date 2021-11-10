@@ -315,7 +315,7 @@
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel" style="font-family: TBC Contractica CAPS black;">სამუშაო დროები</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel" style="font-family: TBC Contractica CAPS black;">სამუშაო დროები  ( {{ $employee->first_name }} ) </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -376,8 +376,11 @@
                                                                             </td>
                                                                             <td class="py-3 px-6 text-center border border-gray-200">
                                                                                 <div class="flex items-center justify-center font-medium">
+                                                                                    @php
+                                                                                        $finish = explode(" ", $work->finishedAt);
+                                                                                    @endphp
                                                                                     @if($work->finishedAt)
-                                                                                        {{ $work->finishedAt }}
+                                                                                        {{ $finish[1] }}
                                                                                     @else null
                                                                                     @endif
                                                                                 </div>

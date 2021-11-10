@@ -3,7 +3,6 @@
         <x-slot name="logo">
             <div class="ml-5 mt-3" style="margin-left: 20px; margin-right: 20px; width: calc(100% - 40px); height: 50px;">
                 <span style="font-family: TBC Contractica CAPS medium; font-size: 24px; float: left; color: white; line-height: 50px;">
-                    <!-- Login -->
                     შესვლა
                 </span>
                 <span style="font-family: 'Nunito'; font-size: 24px; float: right; color: white;">

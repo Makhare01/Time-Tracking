@@ -29,7 +29,7 @@
                 </div>
                 @endif
 
-                @foreach($projects as $project)
+                @foreach($projects as $key => $project)
                     @if($Project == $project->project_name)
                         <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                             <div
@@ -38,7 +38,7 @@
                                 id="project{{ $project->id }}"
                                 style="width: 140px; height: 140px; border-radius: 10px; margin: auto;"
                             >
-                                <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 22pt; font-weight: bold; text-align: center;">28</p>
+                                <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 22pt; font-weight: bold; text-align: center;"> {{ $project_count[$key] }} </p>
                                 <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 10pt; font-weight: bold; text-align: center; color: grey; font-style: italic;">{{$project->project_name}}</p>
                                 @if($project->project_status == "active")
                                 <p style="font-family: TBC Contractica CAPS regular; font-size: 10pt; font-weight: bold; text-align: center; color: #34D399; margin-top: 20px;">
@@ -63,7 +63,7 @@
                                 id="project{{ $project->id }}"
                                 style="width: 140px; height: 140px; border-radius: 10px; margin: auto;"
                             >
-                                <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 22pt; font-weight: bold; text-align: center;">28</p>
+                                <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 22pt; font-weight: bold; text-align: center;"> {{ $project_count[$key] }} </p>
                                 <p class="my-2" style="font-family: TBC Contractica CAPS black; font-size: 10pt; font-weight: bold; text-align: center; color: grey; font-style: italic;">{{$project->project_name}}</p>
                                 @if($project->project_status == "active")
                                 <p style="font-family: TBC Contractica CAPS regular; font-size: 10pt; font-weight: bold; text-align: center; color: #34D399; margin-top: 20px;">
@@ -84,11 +84,13 @@
                 @endforeach
             </div>
         </div>
+
         <p class="mb-2 ml-2" style="font-family: TBC Contractica CAPS regular, sans-serif; font-size: 14pt; font-weight: bold;">
             @if($Project != 'all') {{ $Project }}
             @else ყველა პროექტი
             @endif
         </p>
+
         <table class="min-w-max w-full table-auto border border-gray-200">
             <thead>
                 <tr class="bg-transparent text-gray-600 uppercase text-sm leading-normal border border-transparent">

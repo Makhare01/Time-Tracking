@@ -8,11 +8,15 @@
         <livewire:employee-working />
 
         <div class="py-4 pb-12 max-w-7xl mx-auto flex">
-            <div class="w-1/3 sm:px-6 lg:px-8">
+            <div class="w-1/3 sm:px-6 lg:px-8" style="position: relative;">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="shadow-lg mb-3" style="width: 120px; height: 120px; position: relative; border: solid 3px lightGrey; border-radius: 50%; margin: auto;">
-                            <div class="bg-green-400" style="width: 15px; height: 15px; border: solid 2px white; border-radius: 50%; position: absolute; top: 8px; left: 8px;"></div>
+                            <!-- <div class="bg-green-400" style="width: 15px; height: 15px; border: solid 2px white; border-radius: 50%; position: absolute; top: 8px; left: 8px;"></div> -->
+                            <span class="flex h-full w-6" style="position: absolute; top: -8px; left: 8px;">
+                                <span style="margin-top: calc(30px - 0.55rem);" class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
+                                <span style="margin-top: calc(30px - 0.55rem);" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
                             <img src="/img/icons/avatar.png" alt="user avatar icon" style="border-radius: 50%;">
                         </div>
                         <p style="font-family: 'Nunito'; font-size: 14pt; font-weight: bold; margin: 0px !important; text-align: center;">  {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </p>
@@ -29,7 +33,7 @@
                                 </p>
                             </div>
 
-                            <div class="my-3 px-3 message-div" style="width: 250px; border-radius: 20px; display: flex;">
+                            <div class="my-3 px-3 message-div" style="width: 250px; border-radius: 20px; display: flex;" onclick="notifications()">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-2 mr-5 message-icon" fill="none" viewBox="0 0 24 24" stroke="#818CF8">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                 </svg>
@@ -38,6 +42,28 @@
                                     თანაგუნდელები
                                 </p>
                             </div>
+                            <div id="user-notification-id" class="user-notification">
+                                <h2 class="mt-3 ml-6 mb-2" style="font-family: TBC Contractica CAPS black, sans-serif;">თანაგუნდელები</h2>
+                                
+                                @foreach($teammates as $teammate)
+                                    <div class="user-notification-user-card">
+                                        <img class="rounded-full ml-3" style="height: 40px; margin-top: 10px;" src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                                        <p class="ml-3" style="font-family: TBC Contractica CAPS black, sans-serif; line-height: 60px; font-size: 12pt !important;"> {{ $teammate->first_name }} {{ $teammate->last_name }} </p>
+                                        @if($teammate->status == 'inactive')
+                                            <span class="flex h-full w-6" style="position: absolute; right: 10px;">
+                                                <span style="margin-top: calc(30px - 0.55rem);" class="absolute inline-flex h-3 w-3 rounded-full bg-gray-400 opacity-75"></span>
+                                                <span style="margin-top: calc(30px - 0.55rem);" class="relative inline-flex rounded-full h-3 w-3 bg-gray-500"></span>
+                                            </span>
+                                        @elseif($teammate->status == 'active')
+                                            <span class="flex h-full w-6" style="position: absolute; right: 10px;">
+                                                <span style="margin-top: calc(30px - 0.55rem);" class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
+                                                <span style="margin-top: calc(30px - 0.55rem);" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                            </span>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            
 
                             <div class="my-3 px-3 message-div" style="width: 250px; border-radius: 20px; display: flex;">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-2 mr-5 message-icon" fill="none" viewBox="0 0 24 24" stroke="#818CF8">

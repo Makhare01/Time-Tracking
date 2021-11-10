@@ -28,12 +28,18 @@ class UserProjects extends Component
         $projectsColumns = ProjectEmployee::where("employee_email", Auth::user()->email)->get();
 
         $projects = [];
+        $project_count = [];
         $projectIds = [];
         for($i=0; $i<count($projectsColumns); $i++) {
             $TMP = Project::find(intval($projectsColumns[$i]->project_id));
+            $TMP1 = ProjectEmployee::where('project_id', intval($projectsColumns[$i]->project_id))->get();
             array_push($projects, $TMP);
+            array_push($project_count, count($TMP1));
             array_push($projectIds, $TMP->id);
         }
+
+        // dd($project_count);
+        // exit;
 
         if($this->Project != 'all'):
             $works = Work::where([
@@ -52,6 +58,7 @@ class UserProjects extends Component
 
         return view('livewire.user-projects', [
             'projects' => $projects,
+            'project_count' => $project_count,
             'projectIds' => $projectIds,
             'works' => $works,
             'Project' => $this->Project,
